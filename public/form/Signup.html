@@ -97,9 +97,15 @@
 	<script type ="text/javascript">
 	$(function() {
 	$("#submit").click(function(){
-		console.log("clicked");
-		console.log(document.getElementById('user').value);
 		var ref = new Firebase("https://hackcancer.firebaseio.com");
+
+		if (document.getElementById("pass").value != document.getElementById("pass2").value){
+			window.alert("Passwords do not match:");
+			var err = new Error(["Passwords do not match"]);
+			console.log(err);
+			return;
+		}
+			
 		ref.createUser({
 			email: document.getElementById("user").value, 
 			password: document.getElementById("pass").value
@@ -127,6 +133,7 @@
 				</br>
 				<input type="text" id = "user" class="form-control" placeholder="Email" autofocus>
 				<input type="password" id = "pass" class="form-control" placeholder="Password">
+				<input type="password" id = "pass2" class="form-control" placeholder="Confirm Password">
 				<div class="col-xs-6 col-md-6 pull-right">
 					<button type="button" id = "submit" class="btn btn-large btn-danger pull-right">Submit</button>
 				</div>
