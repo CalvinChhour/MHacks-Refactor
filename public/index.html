@@ -131,6 +131,7 @@ body{
 				console.log("Login Failed!", error);
 		  	} else {
 		    	console.log("Authenticated successfully with payload:", authData);
+		    	self.ref.childByAppendingPath("users/\(uid)").setValue(user)
 		  	}
 		});
 	});
